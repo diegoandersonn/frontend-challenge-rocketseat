@@ -40,7 +40,7 @@ const PageStyle = styled.div<{ active?: boolean }>`
 
 export default function Pagination() {
   const { page, setPage } = useContext(FilterContext);
-  const totalPages = Array.from({ length: 5 }, (_, i) => i + 1);
+  const totalPages = Array.from({ length: 5 }, (_, i) => i);
   return (
     <PaginationStyle>
       {totalPages.map((value) => (
@@ -49,18 +49,18 @@ export default function Pagination() {
           active={value === page}
           onClick={() => setPage(value)}
         >
-          {value}
+          {value + 1}
         </PageStyle>
       ))}
       <PageStyle onClick={() => {
-        if(page !== 1) {
+        if(page !== 0) {
           setPage(page-1)
         }
       }}>
         <ArrowLeft />
       </PageStyle>
       <PageStyle onClick={() => {
-        if(page !== 5) {
+        if(page !== 4) {
           setPage(page+1)
         }
       }}>

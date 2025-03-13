@@ -14,8 +14,8 @@ const ProductsListStyle = styled.ul`
 `;
 
 export default function ProductsList() {
-  const { page, perPage, categoryFilter } = useContext(FilterContext);
-  const { data, isLoading, error } = useProducts(page, perPage, categoryFilter);
+  const { page, perPage, categoryFilter, orderFilter } = useContext(FilterContext);
+  const { data, isLoading, error } = useProducts(page, perPage, categoryFilter, orderFilter);
   if (isLoading) return <p>carregando</p>;
   if (error) return <p>error</p>;
   return (

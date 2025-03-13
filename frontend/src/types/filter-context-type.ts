@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { CategoryFilterType } from "./category-filter-type";
+import { OrderFilterType } from "./order-filter-type";
 
 export type FilterContextType = {
   categoryFilter: CategoryFilterType;
@@ -7,6 +8,8 @@ export type FilterContextType = {
   page: number;
   setPage: (page: number) => void;
   perPage: number;
+  orderFilter: OrderFilterType | null;
+  setOrderFilter: (orderFilter: OrderFilterType) => void;
 };
 export type FilterProviderType = {
   children: ReactNode;

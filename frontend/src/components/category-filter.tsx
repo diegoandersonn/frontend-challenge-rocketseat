@@ -8,7 +8,7 @@ const CategoryFilterStyle = styled.div`
   gap: 40px;
 `;
 
-const FilterCategory = styled.p<{ active?: boolean }>`
+const CategoryItem  = styled.p<{ active?: boolean }>`
   font-family: inherit;
   font-weight: 600;
   font-size: 16px;
@@ -26,28 +26,28 @@ const FilterCategory = styled.p<{ active?: boolean }>`
     `}
 `;
 
-export default function CategoryTypeFilter() {
+export default function CategoryFilter() {
   const { categoryFilter, setCategoryFilter } = useContext(FilterContext);
   return (
     <CategoryFilterStyle>
-      <FilterCategory
+      <CategoryItem 
         active={categoryFilter === CategoryFilterType.all}
         onClick={() => setCategoryFilter(CategoryFilterType.all)}
       >
         Todos Os Produtos
-      </FilterCategory>
-      <FilterCategory
+      </CategoryItem >
+      <CategoryItem 
         active={categoryFilter === CategoryFilterType.shirt}
         onClick={() => setCategoryFilter(CategoryFilterType.shirt)}
       >
         Camisetas
-      </FilterCategory>
-      <FilterCategory
+      </CategoryItem >
+      <CategoryItem 
         active={categoryFilter === CategoryFilterType.mugs}
         onClick={() => setCategoryFilter(CategoryFilterType.mugs)}
       >
         Canecas
-      </FilterCategory>
+      </CategoryItem >
     </CategoryFilterStyle>
   );
 }

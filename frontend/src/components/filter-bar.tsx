@@ -1,6 +1,6 @@
 "use client";
 import styled from "styled-components";
-import CategoryTypeFilter from "./category-type-filter";
+import CategoryTypeFilter from "./category-filter";
 import OrderFilter from "./order-filter";
 
 const FilterBarStyle = styled.div`
