@@ -1,10 +1,21 @@
+import { CategoryFilterType } from "@/types/category-filter-type";
 import { useQuery } from "@tanstack/react-query";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL as string;
 
-export const useProducts = (page: number, limit: number) => {
+export const useProducts = (
+  page: number,
+  perPage: number,
+  categoryFilter: CategoryFilterType
+) => {
+  const categoryFilterParsed = categoryFilter
+    ? {
+        category:
+          categoryFilter === CategoryFilterType.all ? undefined : categoryFilter,
+      }
+    : {};
   return useQuery({
-    queryKey: ["get-products", page],
+    queryKey: ["get-products", page, categoryFilter],
     queryFn: async () => {
       const response = await fetch(API_URL, {
         method: "POST",
@@ -13,8 +24,8 @@ export const useProducts = (page: number, limit: number) => {
         },
         body: JSON.stringify({
           query: `
-            query GetProducts($page: Int, $limit: Int) {
-              allProducts(page: $page, limit: $limit) {
+            query Products($page: Int, $perPage: Int, $filter: ProductFilter) {
+              allProducts(page: $page, perPage: $perPage, filter: $filter) {
                 id
                 name
                 price_in_cents
@@ -22,7 +33,7 @@ export const useProducts = (page: number, limit: number) => {
               }
             }
           `,
-          variables: { page, limit },
+          variables: { page, perPage, filter: categoryFilterParsed },
         }),
       });
       if (!response.ok) {

@@ -1,6 +1,6 @@
 "use client";
 import styled from "styled-components";
-import ItemTypeFilter from "./item-type-filter";
+import CategoryTypeFilter from "./category-type-filter";
 import OrderFilter from "./order-filter";
 
 const FilterBarStyle = styled.div`
@@ -12,7 +12,7 @@ const FilterBarStyle = styled.div`
 export default function FilterBar() {
   return (
     <FilterBarStyle>
-      <ItemTypeFilter />
+      <CategoryTypeFilter />
       <OrderFilter />
     </FilterBarStyle>
   );

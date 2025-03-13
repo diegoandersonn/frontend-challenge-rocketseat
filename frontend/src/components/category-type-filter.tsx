@@ -1,0 +1,53 @@
+import { FilterContext } from "@/contexts/filter-context";
+import { CategoryFilterType } from "@/types/category-filter-type";
+import { useContext } from "react";
+import styled, { css } from "styled-components";
+
+const CategoryFilterStyle = styled.div`
+  display: flex;
+  gap: 40px;
+`;
+
+const FilterCategory = styled.p<{ active?: boolean }>`
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0%;
+  text-align: center;
+  text-transform: uppercase;
+  color: #737380;
+  cursor: pointer;
+  ${(props) =>
+    props.active &&
+    css`
+      border-bottom: 4px solid #ffa585;
+      color: #41414d;
+    `}
+`;
+
+export default function CategoryTypeFilter() {
+  const { categoryFilter, setCategoryFilter } = useContext(FilterContext);
+  return (
+    <CategoryFilterStyle>
+      <FilterCategory
+        active={categoryFilter === CategoryFilterType.all}
+        onClick={() => setCategoryFilter(CategoryFilterType.all)}
+      >
+        Todos Os Produtos
+      </FilterCategory>
+      <FilterCategory
+        active={categoryFilter === CategoryFilterType.shirt}
+        onClick={() => setCategoryFilter(CategoryFilterType.shirt)}
+      >
+        Camisetas
+      </FilterCategory>
+      <FilterCategory
+        active={categoryFilter === CategoryFilterType.mugs}
+        onClick={() => setCategoryFilter(CategoryFilterType.mugs)}
+      >
+        Canecas
+      </FilterCategory>
+    </CategoryFilterStyle>
+  );
+}

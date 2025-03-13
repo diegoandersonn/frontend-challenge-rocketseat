@@ -2,17 +2,20 @@
 import { useProducts } from "@/hooks/useProducts";
 import ProductCard from "./product-card";
 import styled from "styled-components";
+import { useContext } from "react";
+import { FilterContext } from "@/contexts/filter-context";
 
 const ProductsListStyle = styled.ul`
   display: grid;
-  width: 100%; 
+  width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
   gap: 32px;
   list-style: none;
 `;
 
 export default function ProductsList() {
-  const { data, isLoading, error } = useProducts(1, 10);
+  const { page, perPage, categoryFilter } = useContext(FilterContext);
+  const { data, isLoading, error } = useProducts(page, perPage, categoryFilter);
   if (isLoading) return <p>carregando</p>;
   if (error) return <p>error</p>;
   return (
@@ -21,7 +24,6 @@ export default function ProductsList() {
         data.map((product: any, index: any) => (
           <ProductCard product={product} key={index} />
         ))}
-      <li>oiiii</li>
     </ProductsListStyle>
   );
 }
