@@ -5,13 +5,14 @@ import styled from "styled-components";
 
 const ProductsListStyle = styled.ul`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 100%; 
+  grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
   gap: 32px;
   list-style: none;
 `;
 
 export default function ProductsList() {
-  const { data, isLoading, error } = useProducts();
+  const { data, isLoading, error } = useProducts(1, 10);
   if (isLoading) return <p>carregando</p>;
   if (error) return <p>error</p>;
   return (

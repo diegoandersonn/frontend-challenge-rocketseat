@@ -4,10 +4,10 @@ import styled from "styled-components";
 const CardStyle = styled.li`
   width: 256px;
   display: flex;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  text-align: left;
-  border-radius: 0px 0px 4px 4px;
+  border-radius: 8px 8px 4px 4px;
   background-color: white;
   font-family: inherit;
   line-height: 150%;
@@ -15,17 +15,22 @@ const CardStyle = styled.li`
   img {
     width: 100%;
     height: 300px;
+    border-radius: 8px 8px 0 0;
   }
   h3 {
-    font-weight: 300;
+    font-weight: 400;
     font-size: 16px;
     line-height: 150%;
+    margin-left: 12px;
+    margin-top: 8px;
     color: #41414d;
   }
   h4 {
     font-weight: 600;
     font-size: 14px;
     line-height: 150%;
+    margin-left: 12px;
+    margin-top: 8px;
     color: #09090a;
   }
   div {
@@ -33,10 +38,10 @@ const CardStyle = styled.li`
     align-items: start;
     justify-content: center;
     flex-direction: column;
-    padding: 8px 0;
+    margin-left: 8px;
     width: 228px;
     height: 1px;
-    margin: 8px 0;
+    margin-left: 8px;
     padding: 0px;
     background: #dce2e5;
   }

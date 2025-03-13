@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ArrowDown from "./arrow-down";
+import {ArrowDown} from "./arrows";
 
 const OrderFilterStyle = styled.div`
   display: flex;
