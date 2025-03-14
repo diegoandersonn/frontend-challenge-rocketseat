@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const CardStyle = styled.li`
@@ -60,9 +62,18 @@ type Props = {
 };
 
 export default function ProductCard({ product }: Props) {
+  const [mounted, setMounted] = useState<boolean>(false)
+  const router = useRouter()
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+  if(!mounted) return null;
+  function handleProductNavigation(id: string) {
+    router.push(`/product/${id}`)
+  }
   return (
     <CardStyle>
-      <img src={product.image_url} alt={product.name} />
+      <img src={product.image_url} alt={product.name} onClick={() => handleProductNavigation(product.id)} />
       <h3>{product.name}</h3>
       <div></div>
       <h4>R$ {product.price_in_cents}</h4>

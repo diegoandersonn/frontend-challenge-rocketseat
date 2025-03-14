@@ -8,7 +8,7 @@ const CategoryFilterStyle = styled.div`
   gap: 40px;
 `;
 
-const CategoryItem  = styled.p<{ active?: boolean }>`
+const CategoryItem = styled.p<{ active?: boolean }>`
   font-family: inherit;
   font-weight: 600;
   font-size: 16px;
@@ -28,22 +28,28 @@ const CategoryItem  = styled.p<{ active?: boolean }>`
 
 export default function CategoryFilter() {
   const { categoryFilter, setCategoryFilter } = useContext(FilterContext);
+  function checkCategoryItem(categoryFilter: CategoryFilterType): boolean {
+    if(categoryFilter === CategoryFilterType.all) return true;
+    if(categoryFilter === CategoryFilterType.shirt) return true;
+    if(categoryFilter === CategoryFilterType.mugs) return true;
+    return false
+  }
   return (
     <CategoryFilterStyle>
-      <CategoryItem 
-        active={categoryFilter === CategoryFilterType.all}
+      <CategoryItem
+        active={checkCategoryItem(categoryFilter)}
         onClick={() => setCategoryFilter(CategoryFilterType.all)}
       >
         Todos Os Produtos
       </CategoryItem >
-      <CategoryItem 
-        active={categoryFilter === CategoryFilterType.shirt}
+      <CategoryItem
+        active={checkCategoryItem(categoryFilter)}
         onClick={() => setCategoryFilter(CategoryFilterType.shirt)}
       >
         Camisetas
       </CategoryItem >
-      <CategoryItem 
-        active={categoryFilter === CategoryFilterType.mugs}
+      <CategoryItem
+        active={checkCategoryItem(categoryFilter)}
         onClick={() => setCategoryFilter(CategoryFilterType.mugs)}
       >
         Canecas

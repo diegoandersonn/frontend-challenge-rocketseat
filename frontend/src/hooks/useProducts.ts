@@ -34,6 +34,7 @@ export const useProducts = (
       orderFilterParsed.sortOrder = "DESC";
     }
   }
+  console.log(API_URL)
   return useQuery({
     queryKey: ["get-products", page, categoryFilter, orderFilter],
     queryFn: async () => {
