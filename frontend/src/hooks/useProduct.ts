@@ -1,17 +1,17 @@
-import { useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query";
 
 export const useProduct = (id: string) => {
-    const API_URL = process.env.NEXT_PUBLIC_API_URL as string;
-    const {data, isLoading, isError} = useQuery({
-        queryKey: ['get-product'],
-        queryFn: async () => {
-            const response = await fetch(API_URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    query: `
+  const API_URL = process.env.NEXT_PUBLIC_API_URL as string;
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["get-product", id],
+    queryFn: async () => {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query: `
                         query Product($id: ID!) {
                             Product(id: $id) {
                             id
@@ -23,11 +23,11 @@ export const useProduct = (id: string) => {
                         }
                      }
                     `,
-                    variables: { id: id }
-                })
-            })
-            return await response.json();
-        }
-    })
-    console.log(data)
-}
+          variables: { id: id },
+        }),
+      });
+      return response.json().then((res) => res.data.Product);
+    },
+  });
+  return {data, isLoading, isError};
+};

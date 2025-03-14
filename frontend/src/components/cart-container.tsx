@@ -1,30 +1,22 @@
 import styled from "styled-components";
-import ShoppingBag from "./shopping-bag";
+import CheckoutSummary from "./checkout-summary";
+import CartInfo from "./cart-info";
 
 const CartContainerStyle = styled.div`
-  position: relative;
-  cursor: pointer;
-`;
-
-const CartCount = styled.span`
-  width: 17px;
-  height: 17px;
-  border-radius: 100%;
-  padding: 0px 5px;
-  background-color: var(--delete-color);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   font-family: inherit;
-  font-weight: 500;
-  font-size: 10px;
-  line-height: 26px;
-  color: white;
-  margin-left: -10px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  vertical-align: middle;
 `;
 
 export default function CartContainer() {
   return (
     <CartContainerStyle>
-      <ShoppingBag />
-      <CartCount>2</CartCount>
+        <CartInfo />
+      <CheckoutSummary />
     </CartContainerStyle>
   );
 }

@@ -28,28 +28,22 @@ const CategoryItem = styled.p<{ active?: boolean }>`
 
 export default function CategoryFilter() {
   const { categoryFilter, setCategoryFilter } = useContext(FilterContext);
-  function checkCategoryItem(categoryFilter: CategoryFilterType): boolean {
-    if(categoryFilter === CategoryFilterType.all) return true;
-    if(categoryFilter === CategoryFilterType.shirt) return true;
-    if(categoryFilter === CategoryFilterType.mugs) return true;
-    return false
-  }
   return (
     <CategoryFilterStyle>
       <CategoryItem
-        active={checkCategoryItem(categoryFilter)}
+        active={categoryFilter === CategoryFilterType.all}
         onClick={() => setCategoryFilter(CategoryFilterType.all)}
       >
         Todos Os Produtos
       </CategoryItem >
       <CategoryItem
-        active={checkCategoryItem(categoryFilter)}
+        active={categoryFilter === CategoryFilterType.shirt}
         onClick={() => setCategoryFilter(CategoryFilterType.shirt)}
       >
         Camisetas
       </CategoryItem >
       <CategoryItem
-        active={checkCategoryItem(categoryFilter)}
+        active={categoryFilter === CategoryFilterType.mugs}
         onClick={() => setCategoryFilter(CategoryFilterType.mugs)}
       >
         Canecas

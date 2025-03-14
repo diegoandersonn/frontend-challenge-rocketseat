@@ -18,6 +18,7 @@ const CardStyle = styled.li`
     width: 100%;
     height: 300px;
     border-radius: 8px 8px 0 0;
+    cursor: pointer;
   }
   h3 {
     font-weight: 400;
