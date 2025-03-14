@@ -13,7 +13,6 @@ const BackButtonStyle = styled.button`
   letter-spacing: 0%;
   vertical-align: middle;
   color: #617480;
-  cursor: pointer;
 `;
 
 export default function BackButton() {

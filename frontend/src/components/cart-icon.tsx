@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import {ShoppingBagGrey} from "./shopping-bag";
+import { ShoppingBagGrey } from "./shopping-bag";
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { CartContext } from "@/contexts/cart-context";
 
 const CartIconStyle = styled.div`
   position: relative;
@@ -21,10 +24,15 @@ const CartCount = styled.span`
 `;
 
 export default function CartIcon() {
+  const router = useRouter();
+  const { amount } = useContext(CartContext);
+  function handleCartNavigation() {
+    router.push("/cart");
+  }
   return (
-    <CartIconStyle>
+    <CartIconStyle onClick={handleCartNavigation}>
       <ShoppingBagGrey />
-      <CartCount>2</CartCount>
+      {amount > 0 && <CartCount>{amount}</CartCount>}
     </CartIconStyle>
   );
 }

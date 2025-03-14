@@ -5,4 +5,5 @@ export type ProductType = {
   image_url: string;
   name: string;
   price_in_cents: number;
+  quantity: number;
 };

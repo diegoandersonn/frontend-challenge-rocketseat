@@ -3,6 +3,10 @@
   --bg-secondary: #f3f5f6;
   --delete-color: #de3838;
   --text-dark: #737380;
+  --price-color: #09090A;
+  --font-primary: #41414D;
+  --orange-light: #ffa585;
+  --light-primary: #f5f5fa;
 }
 html,
 body {
@@ -11,6 +15,10 @@ body {
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
 }
 
 * {

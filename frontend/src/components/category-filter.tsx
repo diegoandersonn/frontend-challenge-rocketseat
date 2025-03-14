@@ -16,13 +16,13 @@ const CategoryItem = styled.p<{ active?: boolean }>`
   letter-spacing: 0%;
   text-align: center;
   text-transform: uppercase;
-  color: #737380;
+  color: var(--text-dark);
   cursor: pointer;
   ${(props) =>
     props.active &&
     css`
-      border-bottom: 4px solid #ffa585;
-      color: #41414d;
+      border-bottom: 4px solid var(--orange-light);
+      color: var(--font-primary);
     `}
 `;
 

@@ -27,14 +27,14 @@ const PageStyle = styled.div<{ active?: boolean }>`
   text-align: center;
   vertical-align: middle;
   text-transform: uppercase;
-  color: #737380;
+  color: var(--text-dark);
   cursor: pointer;
   ${(props) =>
     props.active &&
     css`
-      border: 1px solid #ffa585;
-      color: #ffa585;
-      background-color: #f5f5fa;
+      border: 1px solid var(--orange-light);
+      color: var(--orange-light);
+      background-color: var(--light-primary);
     `}
 `;
 
@@ -52,18 +52,22 @@ export default function Pagination() {
           {value + 1}
         </PageStyle>
       ))}
-      <PageStyle onClick={() => {
-        if(page !== 0) {
-          setPage(page-1)
-        }
-      }}>
+      <PageStyle
+        onClick={() => {
+          if (page !== 0) {
+            setPage(page - 1);
+          }
+        }}
+      >
         <ArrowLeft />
       </PageStyle>
-      <PageStyle onClick={() => {
-        if(page !== 4) {
-          setPage(page+1)
-        }
-      }}>
+      <PageStyle
+        onClick={() => {
+          if (page !== 4) {
+            setPage(page + 1);
+          }
+        }}
+      >
         <ArrowRight />
       </PageStyle>
     </PaginationStyle>

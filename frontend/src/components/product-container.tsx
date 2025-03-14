@@ -1,7 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
 import { ProductType } from "@/types/product-type";
 import styled from "styled-components";
 import { ShoppingBagWhite } from "./shopping-bag";
+import { useContext } from "react";
+import { CartContext } from "@/contexts/cart-context";
+import { useRouter } from "next/navigation";
 
 const ProductContainerStyle = styled.div`
   display: flex;
@@ -24,37 +28,37 @@ const ProductContainerStyle = styled.div`
   h1 {
     font-weight: 300;
     font-size: 32px;
-    color: #41414d;
+    color: var(--font-primary);
     margin-top: 12px;
   }
   h2 {
     font-weight: 600;
     font-size: 20px;
-    color: #09090a;
+    color: var(--price-color);
     margin-top: 4px;
   }
   h3 {
     font-weight: 500;
     font-size: 16px;
     text-transform: uppercase;
-    color: #737380;
+    color: var(--text-dark);
     margin-top: 58px;
   }
   h4 {
     font-weight: 400;
     font-size: 16px;
-    color: #41414d;
+    color: var(--font-primary);
   }
   .shipping-info {
     font-weight: 400;
     font-size: 12px;
-    color: #41414d;
+    color: var(--font-primary);
     margin-top: 24px;
   }
   .product-description {
     font-weight: 400;
     font-size: 14px;
-    color: #41414d;
+    color: var(--font-primary);
   }
   button {
     display: flex;
@@ -71,8 +75,7 @@ const ProductContainerStyle = styled.div`
     font-size: 16px;
     text-align: center;
     text-transform: uppercase;
-    color: #f5f5fa;
-    cursor: pointer;
+    color: var(--light-primary);
   }
 `;
 
@@ -81,6 +84,12 @@ type Props = {
 };
 
 export default function ProductContainer({ product }: Props) {
+  const { addToCart } = useContext(CartContext);
+  const router = useRouter();
+  function handleClick(product: ProductType) {
+    addToCart(product);
+    router.push("/");
+  }
   return (
     <ProductContainerStyle>
       <img src={product.image_url} alt={product.name} />
@@ -102,7 +111,7 @@ export default function ProductContainer({ product }: Props) {
           <h3>Descrição</h3>
           <p className="product-description">{product.description}</p>
         </div>
-        <button>
+        <button onClick={() => handleClick(product)}>
           <ShoppingBagWhite />
           <p>Adicionar ao Carrinho</p>
         </button>

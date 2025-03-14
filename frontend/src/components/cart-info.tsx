@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import CartProducts from "./cart-products";
 
 const CartInfoStyle = styled.div`
+  height: 700px;
   h1 {
     font-weight: 500;
     font-size: 24px;
@@ -31,6 +33,7 @@ export default function CartInfo() {
         <h2>Total (3 produtos)</h2>
         <h2 className="cart-total">R$161,00</h2>
       </div>
+      <CartProducts />
     </CartInfoStyle>
   );
 }

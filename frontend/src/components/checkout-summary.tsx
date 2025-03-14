@@ -6,11 +6,12 @@ const CheckoutSummaryStyle = styled.div`
   justify-content: space-between;
   background-color: white;
   height: 700px;
+  min-width: 352px;
   padding: 24px 16px;
   .checkout-details {
     font-weight: 400;
     font-size: 16px;
-    color: #41414d;
+    color: var(--font-primary);
     h1 {
       font-weight: 600;
       font-size: 20px;
@@ -45,7 +46,7 @@ const CheckoutSummaryStyle = styled.div`
       font-size: 16px;
       text-align: center;
       text-transform: uppercase;
-      color: #f5f5fa;
+      color: var(--light-primary);
       margin-top: 40px;
     }
   }
@@ -55,7 +56,7 @@ const CheckoutSummaryStyle = styled.div`
     line-height: 150%;
     text-transform: uppercase;
     text-decoration: underline;
-    color: #737380;
+    color: var(--text-dark);
     li {
       list-style: none;
     }

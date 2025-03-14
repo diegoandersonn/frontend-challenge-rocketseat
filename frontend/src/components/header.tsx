@@ -34,7 +34,7 @@ const Aside = styled.div`
 export default function Header() {
   const router = useRouter();
   function handleNavigation() {
-    router.push("/")
+    router.push("/");
   }
   return (
     <HeaderStyle>
@@ -43,7 +43,7 @@ export default function Header() {
       </Logo>
       <Aside>
         <SearchBar />
-        <CartIcon/>
+        <CartIcon />
       </Aside>
     </HeaderStyle>
   );

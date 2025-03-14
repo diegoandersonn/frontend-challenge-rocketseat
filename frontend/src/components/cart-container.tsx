@@ -5,6 +5,7 @@ import CartInfo from "./cart-info";
 const CartContainerStyle = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 32px;
   width: 100%;
   font-family: inherit;
   line-height: 150%;
@@ -15,7 +16,7 @@ const CartContainerStyle = styled.div`
 export default function CartContainer() {
   return (
     <CartContainerStyle>
-        <CartInfo />
+      <CartInfo />
       <CheckoutSummary />
     </CartContainerStyle>
   );

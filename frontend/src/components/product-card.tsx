@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const CardStyle = styled.li`
@@ -26,7 +25,7 @@ const CardStyle = styled.li`
     line-height: 150%;
     margin-left: 12px;
     margin-top: 8px;
-    color: #41414d;
+    color: var(--font-primary);
   }
   h4 {
     font-weight: 600;
@@ -34,7 +33,7 @@ const CardStyle = styled.li`
     line-height: 150%;
     margin-left: 12px;
     margin-top: 8px;
-    color: #09090a;
+    color: var(--price-color);
   }
   div {
     display: flex;
@@ -63,18 +62,17 @@ type Props = {
 };
 
 export default function ProductCard({ product }: Props) {
-  const [mounted, setMounted] = useState<boolean>(false)
-  const router = useRouter()
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-  if(!mounted) return null;
+  const router = useRouter();
   function handleProductNavigation(id: string) {
-    router.push(`/product/${id}`)
+    router.push(`/product/${id}`);
   }
   return (
     <CardStyle>
-      <img src={product.image_url} alt={product.name} onClick={() => handleProductNavigation(product.id)} />
+      <img
+        src={product.image_url}
+        alt={product.name}
+        onClick={() => handleProductNavigation(product.id)}
+      />
       <h3>{product.name}</h3>
       <div></div>
       <h4>R$ {product.price_in_cents}</h4>
