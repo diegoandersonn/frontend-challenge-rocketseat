@@ -1,6 +1,5 @@
 import { CategoryFilterType } from "@/types/category-filter-type";
 import { OrderFilterType } from "@/types/order-filter-type";
-import { ProductType } from "@/types/product-type";
 import { useQuery } from "@tanstack/react-query";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL as string;
@@ -67,11 +66,7 @@ export const useProducts = (
         throw new Error("Erro ao buscar produtos");
       }
       const { data } = await response.json();
-      const products = data.allProducts.map((product: ProductType) => ({
-        ...product,
-        quantity: 0,
-      }));
-      return products;
+      return data.allProducts;
     },
   });
 };

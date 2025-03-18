@@ -3,7 +3,7 @@ import { CartContext } from "@/contexts/cart-context";
 import { useContext } from "react";
 import styled from "styled-components";
 import Trash from "./trash";
-import { ArrowDown } from "./arrows";
+import { ProductType } from "@/types/product-type";
 
 const CartProductsStyle = styled.ul`
   display: flex;
@@ -59,7 +59,7 @@ const CartProductsStyle = styled.ul`
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
-        button {
+        select {
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -92,8 +92,12 @@ const CartProductsStyle = styled.ul`
 `;
 
 export default function CartProducts() {
-  const { cart, deleteProduct, amount } = useContext(CartContext);
-  console.log(amount)
+  const { cart, deleteProduct, updateProduct } = useContext(CartContext);
+  const selectOptions = Array.from({ length: 10 }, (_, i) => i+1);
+  function handleSelectChange(quantity: string, product: ProductType) {
+    const newProduct: ProductType = { ...product, quantity: Number(quantity) };
+    updateProduct(newProduct);
+  }
   return (
     <CartProductsStyle>
       {cart.map((product) => (
@@ -108,11 +112,17 @@ export default function CartProducts() {
             </div>
             <p>{product.description}</p>
             <div className="bottom">
-              <button>
-                1
-                <ArrowDown />
-              </button>
-              <h2>R$ {product.price_in_cents}</h2>
+              <select
+                value={product.quantity}
+                onChange={(e) => handleSelectChange(e.target.value, product)}
+              >
+                {selectOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              <h2>R$ {product.price_in_cents * product.quantity}</h2>
             </div>
           </div>
         </li>

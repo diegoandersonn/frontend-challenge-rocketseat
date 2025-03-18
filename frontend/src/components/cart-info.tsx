@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import CartProducts from "./cart-products";
+import { useContext } from "react";
+import { CartContext } from "@/contexts/cart-context";
 
 const CartInfoStyle = styled.div`
   height: 700px;
@@ -26,12 +28,13 @@ const CartInfoStyle = styled.div`
   }
 `;
 export default function CartInfo() {
+  const { amount, getCartSum } = useContext(CartContext);
   return (
     <CartInfoStyle>
       <h1>Seu Carrinho</h1>
       <div className="cart-subtitle">
-        <h2>Total (3 produtos)</h2>
-        <h2 className="cart-total">R$161,00</h2>
+        <h2>Total ({amount} produtos)</h2>
+        <h2 className="cart-total">R${getCartSum()}</h2>
       </div>
       <CartProducts />
     </CartInfoStyle>

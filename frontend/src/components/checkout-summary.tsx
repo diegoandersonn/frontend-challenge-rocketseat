@@ -1,3 +1,5 @@
+import { CartContext } from "@/contexts/cart-context";
+import { useContext } from "react";
 import styled from "styled-components";
 
 const CheckoutSummaryStyle = styled.div`
@@ -64,6 +66,7 @@ const CheckoutSummaryStyle = styled.div`
 `;
 
 export default function CheckoutSummary() {
+  const {getCartSum} = useContext(CartContext)
   return (
     <CheckoutSummaryStyle>
       <div className="checkout-details">
@@ -71,7 +74,7 @@ export default function CheckoutSummary() {
         <ul>
           <li>
             <p>Subtotal de produtos</p>
-            <p>R$ 161,00</p>
+            <p>R$ {getCartSum()}</p>
           </li>
           <li>
             <p>Entrega</p>
@@ -80,7 +83,7 @@ export default function CheckoutSummary() {
           <li className="divider"></li>
           <li className="checkout-total">
             <p>Total</p>
-            <p>R$ 201,00</p>
+            <p>R$ {getCartSum() + 40}</p>
           </li>
         </ul>
         <button>Finalizar a compra</button>

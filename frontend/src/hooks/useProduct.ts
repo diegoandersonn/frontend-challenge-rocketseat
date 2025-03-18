@@ -29,5 +29,5 @@ export const useProduct = (id: string) => {
       return response.json().then((res) => res.data.Product);
     },
   });
-  return {data, isLoading, isError};
+  return { data, isLoading, isError };
 };
